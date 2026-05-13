@@ -1,4 +1,4 @@
-pages_build_output_dir = ".next"
+pages_build_output_dir = ".vercel/output/static"
 name = "english-teacher-portfolio"
 compatibility_date = "2024-12-16"
 
