@@ -1,0 +1,43 @@
+name = "english-teacher-portfolio"
+type = "javascript"
+main = "dist/index.js"
+compatibility_date = "2024-12-16"
+
+# Environment configuration for production
+[env.production]
+name = "english-teacher-portfolio-prod"
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "english-portfolio"
+database_id = "your-database-id"
+
+# R2 Bucket Binding for storage
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "english-portfolio-assets"
+preview_bucket_name = "english-portfolio-assets-preview"
+
+# Environment Variables
+[env.production.vars]
+ADMIN_EMAIL = "admin@example.com"
+SITE_URL = "https://yourdomain.com"
+YOUTUBE_API_KEY = ""
+
+[env.production.secrets]
+ADMIN_PASSWORD_HASH = ""
+JWT_SECRET = ""
+
+# Build configuration
+build = { command = "next build", cwd = "." }
+
+# Functions configuration for image optimization and edge cases
+[[routes]]
+pattern = "/images/*"
+zone_name = "yourdomain.com"
+
+[[routes]]
+pattern = "/api/*"
+zone_name = "yourdomain.com"
+custom_domain = true
